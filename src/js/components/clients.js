@@ -18,14 +18,13 @@ export class ClientsComponent {
   render() {
     this.container.innerHTML = `
       <div class="clients-section">
-        <div class="container px-4 py-2">
-          <div class="text-center fade-in">
+        <div class="clients-container">
+          <div class="clients-header fade-in">
             <h1 class="clients-title">Our Clients</h1>
-            <hr class="clients-divider">
           </div>
           
-          <div class="row">
-            ${this.renderClientGrid()}
+          <div class="clients-grid">
+            ${this.renderClientItems()}
           </div>
         </div>
       </div>
@@ -33,33 +32,31 @@ export class ClientsComponent {
 
     // Add certificates section
     document.getElementById('certificates').innerHTML = `
-      <div class="certificates-container fade-in">
-        <img src="certificates/MSME.png" alt="MSME Certificate" class="certificate-image">
-        <img src="certificates/ISO.png" alt="ISO Certificate" class="certificate-image">
+      <div class="clients-section">
+        <div class="clients-container">
+          <div class="certificates-section fade-in">
+            <h2 class="certificates-title">Our Certifications</h2>
+            <div class="certificates-container">
+              <div class="certificate-item">
+                <img src="certificates/MSME.png" alt="MSME Certificate" class="certificate-image">
+                <p class="certificate-label">MSME Certified</p>
+              </div>
+              <div class="certificate-item">
+                <img src="certificates/ISO.png" alt="ISO Certificate" class="certificate-image">
+                <p class="certificate-label">ISO 9001:2015</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     `;
   }
 
-  renderClientGrid() {
-    const columns = [[], [], []]; // Three columns
-    
-    this.clients.forEach((client, index) => {
-      const columnIndex = index % 3;
-      columns[columnIndex].push(this.renderClientItem(client, index));
-    });
-
-    return columns.map((column, index) => `
-      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        ${column.join('')}
+  renderClientItems() {
+    return this.clients.map((client, index) => `
+      <div class="client-item fade-in" style="animation-delay: ${index * 0.1}s">
+        <img class="client-logo" src="${client}" alt="Client ${index + 1}">
       </div>
     `).join('');
-  }
-
-  renderClientItem(clientLogo, index) {
-    return `
-      <div class="client-item fade-in">
-        <img class="client-logo" src="${clientLogo}" alt="Client ${index + 1}">
-      </div>
-    `;
   }
 }

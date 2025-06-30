@@ -18,51 +18,34 @@ export class ProductsComponent {
   render() {
     this.container.innerHTML = `
       <div class="products-section">
-        <div class="container px-4 py-2">
-          <div class="products-container fade-in">
-            <h1 class="display-4 fw-bold text-center text-primary-custom">Products Offered</h1>
-            <div class="col-lg-10 mx-auto">
-              <p class="company-text text-justify">
-                We manufacture a wide array of molded rubber components using both natural and
-                synthetic rubber. Our products are characterized by high strength, durability, and flame
-                retardant properties, and are renowned for their dimensional accuracy. Each rubber
-                component is meticulously crafted to comply with established industry standards, ensuring
-                superior quality and performance.
-              </p>
-            </div>
+        <div class="products-container">
+          <div class="products-intro fade-in">
+            <h1 class="products-title">Products Offered</h1>
+            <p class="products-description">
+              We manufacture a wide array of molded rubber components using both natural and
+              synthetic rubber. Our products are characterized by high strength, durability, and flame
+              retardant properties, and are renowned for their dimensional accuracy. Each rubber
+              component is meticulously crafted to comply with established industry standards, ensuring
+              superior quality and performance.
+            </p>
           </div>
           
-          <div class="row">
-            ${this.renderProductGrid()}
+          <div class="products-grid">
+            ${this.renderProductItems()}
           </div>
         </div>
       </div>
     `;
   }
 
-  renderProductGrid() {
-    const columns = [[], [], []]; // Three columns
-    
-    this.products.forEach((product, index) => {
-      const columnIndex = index % 3;
-      columns[columnIndex].push(this.renderProductItem(product));
-    });
-
-    return columns.map((column, index) => `
-      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        ${column.join('')}
-      </div>
-    `).join('');
-  }
-
-  renderProductItem(product) {
-    return `
-      <div class="product-item fade-in">
+  renderProductItems() {
+    return this.products.map((product, index) => `
+      <div class="product-item fade-in" style="animation-delay: ${index * 0.1}s">
         <div class="product-image">
-          <img class="image-responsive" src="${product.image}" alt="${product.alt}">
+          <img src="${product.image}" alt="${product.alt}">
         </div>
         <h3 class="product-title">${product.name}</h3>
       </div>
-    `;
+    `).join('');
   }
 }

@@ -14,18 +14,64 @@ export function initializeAnimations() {
     });
   }, observerOptions);
 
-  // Observe all elements with fade-in class
-  document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
+  // Observe all elements with animation classes
+  const animationClasses = ['.fade-in', '.slide-in-left', '.slide-in-right'];
+  
+  animationClasses.forEach(className => {
+    document.querySelectorAll(className).forEach(el => {
+      observer.observe(el);
+    });
   });
 
   // Add smooth scrolling behavior
   document.documentElement.style.scrollBehavior = 'smooth';
+
+  // Add staggered animations for grid items
+  addStaggeredAnimations();
 }
 
 // Utility function to add staggered animations
-export function addStaggeredAnimation(elements, delay = 100) {
-  elements.forEach((element, index) => {
-    element.style.animationDelay = `${index * delay}ms`;
+export function addStaggeredAnimations() {
+  const productItems = document.querySelectorAll('.product-item');
+  const clientItems = document.querySelectorAll('.client-item');
+  
+  productItems.forEach((element, index) => {
+    element.style.animationDelay = `${index * 0.1}s`;
   });
+  
+  clientItems.forEach((element, index) => {
+    element.style.animationDelay = `${index * 0.1}s`;
+  });
+}
+
+// Utility function for scroll-triggered animations
+export function addScrollAnimations() {
+  const scrollElements = document.querySelectorAll('.scroll-animate');
+  
+  const elementInView = (el, dividend = 1) => {
+    const elementTop = el.getBoundingClientRect().top;
+    return (
+      elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+    );
+  };
+
+  const displayScrollElement = (element) => {
+    element.classList.add('scrolled');
+  };
+
+  const hideScrollElement = (element) => {
+    element.classList.remove('scrolled');
+  };
+
+  const handleScrollAnimation = () => {
+    scrollElements.forEach((el) => {
+      if (elementInView(el, 1.25)) {
+        displayScrollElement(el);
+      } else {
+        hideScrollElement(el);
+      }
+    });
+  };
+
+  window.addEventListener('scroll', handleScrollAnimation);
 }
