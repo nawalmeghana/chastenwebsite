@@ -1,0 +1,35 @@
+/* Header styles */
+.top-bar {
+  background-color: var(--accent-color);
+  padding: var(--spacing-xs) 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.top-bar a {
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.top-bar a:hover {
+  color: var(--secondary-color);
+}
+
+.phone-number {
+  margin-right: 8px;
+}
+
+.topbar-item {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-item svg {
+  margin-left: 8px;
+  transition: var(--transition);
+}
+
+.topbar-item svg:hover {
+  color: var(--secondary-color);
+}

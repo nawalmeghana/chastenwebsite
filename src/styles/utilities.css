@@ -1,0 +1,51 @@
+/* Utility classes */
+.btn-primary-custom {
+  background-color: var(--secondary-color);
+  border: none;
+  color: var(--white);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-small);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary-custom:hover {
+  background-color: #7599a9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(133, 168, 191, 0.3);
+}
+
+.image-responsive {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-medium);
+}
+
+.shadow-custom {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.border-custom {
+  border: 3px solid var(--primary-color);
+  border-radius: var(--border-radius-medium);
+}
+
+.text-primary-custom {
+  color: var(--primary-color);
+}
+
+.text-secondary-custom {
+  color: var(--secondary-color);
+}
+
+.bg-primary-custom {
+  background-color: var(--primary-color);
+}
+
+.bg-secondary-custom {
+  background-color: var(--secondary-color);
+}

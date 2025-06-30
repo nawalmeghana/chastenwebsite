@@ -1,0 +1,53 @@
+/* Company section styles */
+.company-section {
+  padding: var(--spacing-xxl) 0;
+}
+
+.company-container {
+  margin: var(--spacing-md);
+  border-radius: var(--border-radius);
+  border: 5px solid var(--secondary-color);
+  padding: var(--spacing-xxl);
+  background-color: var(--white);
+}
+
+.company-title {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-xl);
+  font-weight: bold;
+}
+
+.company-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-lg);
+}
+
+.attributes-list {
+  text-align: left;
+  font-size: 1.1rem;
+  padding-left: var(--spacing-lg);
+}
+
+.attributes-list li {
+  margin-bottom: var(--spacing-sm);
+  position: relative;
+}
+
+.attributes-list li::before {
+  content: "✓";
+  color: var(--secondary-color);
+  font-weight: bold;
+  position: absolute;
+  left: -20px;
+}
+
+.quote-text {
+  font-style: italic;
+  font-size: 1.2rem;
+  padding: var(--spacing-lg);
+  background-color: var(--accent-color);
+  border-left: 4px solid var(--secondary-color);
+  margin: var(--spacing-lg) 0;
+  border-radius: var(--border-radius-small);
+}

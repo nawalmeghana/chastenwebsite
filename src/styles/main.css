@@ -1,0 +1,11 @@
+/* Main CSS file - imports all component styles */
+@import url('./base.css');
+@import url('./components/header.css');
+@import url('./components/navbar.css');
+@import url('./components/hero.css');
+@import url('./components/company.css');
+@import url('./components/products.css');
+@import url('./components/gallery.css');
+@import url('./components/clients.css');
+@import url('./components/contact.css');
+@import url('./utilities.css');
