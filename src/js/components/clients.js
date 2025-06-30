@@ -38,11 +38,11 @@ export class ClientsComponent {
             <h2 class="certificates-title">Our Certifications</h2>
             <div class="certificates-container">
               <div class="certificate-item">
-                <img src="certificates/MSME.png" alt="MSME Certificate" class="certificate-image">
+                <img src="certificates/MSME.png" alt="MSME Certificate" class="certificate-image" loading="lazy">
                 <p class="certificate-label">MSME Certified</p>
               </div>
               <div class="certificate-item">
-                <img src="certificates/ISO.png" alt="ISO Certificate" class="certificate-image">
+                <img src="certificates/ISO.png" alt="ISO Certificate" class="certificate-image" loading="lazy">
                 <p class="certificate-label">ISO 9001:2015</p>
               </div>
             </div>
@@ -55,7 +55,11 @@ export class ClientsComponent {
   renderClientItems() {
     return this.clients.map((client, index) => `
       <div class="client-item fade-in" style="animation-delay: ${index * 0.1}s">
-        <img class="client-logo" src="${client}" alt="Client ${index + 1}">
+        <img class="client-logo" 
+             src="${client}" 
+             alt="Client ${index + 1}" 
+             loading="lazy"
+             onerror="this.style.display='none'">
       </div>
     `).join('');
   }

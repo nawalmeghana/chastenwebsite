@@ -5,6 +5,24 @@
   font-size: 14px;
   font-weight: var(--font-weight-medium);
   border-bottom: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.top-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(32, 52, 84, 0.05), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
 .top-bar .container {
@@ -13,16 +31,35 @@
   padding: 0 var(--spacing-md);
 }
 
+.top-bar .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
 .bar-text {
   color: var(--text-primary);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .topbar-item {
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.phone-number {
+  display: inline-flex;
+  align-items: center;
 }
 
 .phone-number a {
@@ -30,11 +67,31 @@
   text-decoration: none;
   font-weight: var(--font-weight-medium);
   transition: var(--transition);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-small);
+  position: relative;
+  overflow: hidden;
+}
+
+.phone-number a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(133, 168, 191, 0.1), transparent);
+  transition: var(--transition);
+}
+
+.phone-number a:hover::before {
+  left: 100%;
 }
 
 .phone-number a:hover {
   color: var(--secondary-color);
-  text-decoration: underline;
+  background-color: rgba(133, 168, 191, 0.1);
+  transform: translateY(-1px);
 }
 
 .topbar-item a {
@@ -45,32 +102,140 @@
   align-items: center;
   padding: var(--spacing-xs);
   border-radius: var(--border-radius-small);
+  position: relative;
+  overflow: hidden;
+}
+
+.topbar-item a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(133, 168, 191, 0.1), transparent);
+  transition: var(--transition);
+}
+
+.topbar-item a:hover::before {
+  left: 100%;
 }
 
 .topbar-item a:hover {
   color: var(--secondary-color);
   background-color: rgba(133, 168, 191, 0.1);
   transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 .topbar-item svg {
   transition: var(--transition);
+  filter: drop-shadow(0 1px 2px rgba(32, 52, 84, 0.1));
 }
 
 .topbar-item a:hover svg {
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 2px 4px rgba(133, 168, 191, 0.3));
+}
+
+/* Enhanced responsive design */
+@media (max-width: 992px) {
+  .top-bar {
+    font-size: 13px;
+    padding: var(--spacing-xs) 0;
+  }
+  
+  .bar-text {
+    font-size: 0.8rem;
+    max-width: 300px;
+  }
+  
+  .phone-number {
+    font-size: 13px;
+  }
+  
+  .topbar-item {
+    gap: var(--spacing-xs);
+  }
 }
 
 @media (max-width: 768px) {
   .top-bar {
     font-size: 12px;
+    padding: var(--spacing-xs) 0;
+  }
+  
+  .top-bar .row {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    text-align: center;
   }
   
   .bar-text {
-    font-size: 11px;
+    font-size: 0.75rem;
+    max-width: 100%;
+    text-align: center;
   }
   
   .phone-number {
     font-size: 12px;
+  }
+  
+  .topbar-item {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .phone-number a {
+    padding: var(--spacing-xs);
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .top-bar {
+    font-size: 11px;
+  }
+  
+  .bar-text {
+    font-size: 0.7rem;
+    line-height: 1.3;
+    padding: 0 var(--spacing-xs);
+  }
+  
+  .phone-number {
+    font-size: 11px;
+  }
+  
+  .topbar-item {
+    gap: 2px;
+  }
+  
+  .phone-number a {
+    padding: 2px 4px;
+    font-size: 11px;
+  }
+  
+  .topbar-item svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bar-text {
+    font-size: 0.65rem;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  
+  .phone-number {
+    display: block;
+    text-align: center;
+  }
+  
+  .phone-number a {
+    display: inline-block;
+    margin: 1px;
   }
 }

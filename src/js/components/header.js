@@ -16,9 +16,16 @@ export class HeaderComponent {
             </div>
             <div class="col-sm-6 d-flex align-items-center justify-content-end">
               <div class="topbar-item d-flex align-items-center">
-                <span class="phone-number me-2"><a href="tel:+919820568558">+91 9820568558</a>/</span>
-                <span class="phone-number me-2"><a href="tel:+919619917558">+91 9619917558</a></span>
-                <a href="mailto:chastenrubber_plastic_pro@yahoo.co.in" class="text-decoration-none ms-2">
+                <span class="phone-number me-2">
+                  <a href="tel:+919820568558" title="Call us at +91 9820568558">+91 9820568558</a>
+                </span>
+                <span class="phone-separator">/</span>
+                <span class="phone-number me-2">
+                  <a href="tel:+919619917558" title="Call us at +91 9619917558">+91 9619917558</a>
+                </span>
+                <a href="mailto:chastenrubber_plastic_pro@yahoo.co.in" 
+                   class="text-decoration-none ms-2" 
+                   title="Send us an email">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-envelope" viewBox="0 0 16 16">
                     <path
